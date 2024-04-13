@@ -2,24 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import { StreamChat } from "stream-chat";
 import { genSaltSync, hashSync } from "bcrypt";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 dotenv.config();
 
 const { PORT, STREAM_API_KEY, STREAM_API_SECRET } = process.env;
 const client = StreamChat.getInstance(STREAM_API_KEY!, STREAM_API_SECRET);
-const firebaseConfig = {
-  apiKey: "AIzaSyA02lBqy1MH9UtDBohhLHBpUxPw4SlI4Xw",
-  authDomain: "livestreaming-deffb.firebaseapp.com",
-  projectId: "livestreaming-deffb",
-  storageBucket: "livestreaming-deffb.appspot.com",
-  messagingSenderId: "297223638980",
-  appId: "1:297223638980:web:6949523cbbcc2bd0aa1e91",
-  measurementId: "G-ZKPLLH9VTV",
-};
-const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
 
 const app = express();
 app.use(express.json());
